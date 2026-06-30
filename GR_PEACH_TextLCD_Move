@@ -5,6 +5,9 @@
 
 TextLCD_I2C lcd(SDA, SCL, false); // set to true if LCD backpack has different pinout
 
+int i;
+int j;
+
 int main() {
     ThisThread::sleep_for(50ms); // give a time to wakeup the controller
 
@@ -12,9 +15,30 @@ int main() {
         printf("init OK\n");
         lcd.display(TextLCD_I2C::DISPLAY_ON);
         lcd.setBacklight(true);
-        lcd.printf("Hello world\n");
 
-    } else {
-        printf("error\n");
+       while(j<4){
+       while(i<15){
+           i=i+1;
+        lcd.locate(i, 0);
+       ThisThread::sleep_for(400ms); // give a time to wakeup the controller
+        lcd.printf("Hello world\n");
+        lcd.locate(i-1, 0);
+        lcd.printf(" ");
+        lcd.locate(1, 1);
+        lcd.printf("backsidekamei\n");
+        }
+        while(i>0){
+          i=i-1;
+        lcd.locate(i, 0);
+       ThisThread::sleep_for(400ms); // give a time to wakeup the controller
+        lcd.printf("Hello world\n");
+        lcd.locate(i+11, 0);
+        lcd.printf(" ");
+        lcd.locate(1, 1);
+        lcd.printf("backsidekamei\n");
+        }
+       }
+
+       }
     }
-}
+
