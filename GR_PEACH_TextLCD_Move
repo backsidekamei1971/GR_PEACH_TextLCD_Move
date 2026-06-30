@@ -1,0 +1,20 @@
+#include "TextLCD_I2C.h"
+
+#define SDA P1_3
+#define SCL P1_2
+
+TextLCD_I2C lcd(SDA, SCL, false); // set to true if LCD backpack has different pinout
+
+int main() {
+    ThisThread::sleep_for(50ms); // give a time to wakeup the controller
+
+    if (lcd.init()) {
+        printf("init OK\n");
+        lcd.display(TextLCD_I2C::DISPLAY_ON);
+        lcd.setBacklight(true);
+        lcd.printf("Hello world\n");
+
+    } else {
+        printf("error\n");
+    }
+}
