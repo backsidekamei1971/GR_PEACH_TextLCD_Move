@@ -9,7 +9,7 @@ int i;
 int j;
 
 int main() {
-    ThisThread::sleep_for(50ms); // give a time to wakeup the controller
+    ThisThread::sleep_for(50ms); //give a time to wakeup the controller
 
     if (lcd.init()) {
         printf("init OK\n");
